@@ -16,6 +16,14 @@ python3 -m http.server 4173
 ## GitHub Pages 배포
 이 저장소에는 `.github/workflows/deploy-pages.yml`이 포함되어 있어 `main` 브랜치 push 시 자동 배포됩니다.
 
-1. `main` 브랜치에 push
-2. 워크플로우의 `configure-pages` 단계에서 Pages 설정을 자동 활성화
-3. Actions 완료 후 배포 URL에서 확인
+> `Resource not accessible by integration` 오류가 발생하면, 워크플로우 토큰에 Pages 사이트 생성 권한이 없는 상태입니다.
+> 이 경우 저장소 관리자 계정으로 Pages를 **최초 1회** 수동 활성화해야 합니다.
+
+1. GitHub 저장소 **Settings → Pages** 이동
+2. **Build and deployment**에서 **Source = GitHub Actions** 선택 후 저장
+3. `main` 브랜치에 push
+4. Actions 완료 후 배포 URL에서 확인
+
+### 참고
+- 조직/기업 정책으로 Actions 권한이 제한된 저장소에서는 자동 생성이 차단될 수 있습니다.
+- Fork 저장소나 권한이 낮은 토큰에서는 Pages 생성 API가 거부될 수 있습니다.
